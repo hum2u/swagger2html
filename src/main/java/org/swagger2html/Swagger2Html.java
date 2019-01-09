@@ -327,8 +327,10 @@ public class Swagger2Html {
 				visitedRefProperties.add((RefProperty) property);
 
 				Model model = swagger.getDefinitions().get(type);
-				Map<String, Property> childProperties = model.getProperties();
-				modelPropertiesToRows(childProperties, swagger, ognlPath, rows, visitedRefProperties);
+				if(model != null) {
+					Map<String, Property> childProperties = model.getProperties();
+					modelPropertiesToRows(childProperties, swagger, ognlPath, rows, visitedRefProperties);
+				}
 			}
 			continue;
 		}
